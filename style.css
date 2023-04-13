@@ -34,15 +34,27 @@ canvas {
 }
 
 .hide-button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
+  background-color: #000000; /* Solid black */
+  color: white; 
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-family: 'Helvetica';
   font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 20%;
+  opacity: 0.8;
+  transition: 0.3s;
 }
+
+
+.hide-button:hover {
+  opacity: 1;
+  transition: 0.3s;
+
+}
+
 
 
 .synth-button {
@@ -52,4 +64,44 @@ canvas {
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
+  opacity: 0.6;
+  transition: 0.3s;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.synth-button:hover {
+  background-color: #000000;
+  color: white;
+  opacity: 1
+}
+
+.track-button {
+  background-color: #000000; /* Solid black */
+  color: white; 
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  border-radius: 30%;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.track-button:hover {
+  background-color: #000000;
+  color: white;
+  opacity: 1
+}
+
+
+.play-button {
+  background-color: #000000; /* Warning Yellow */
+  color: white; 
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  border-radius: 30%;
+  font-family: Helvetica, Arial, sans-serif;
 }

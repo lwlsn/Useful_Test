@@ -69,15 +69,26 @@ class Sequencer {
     }
   }
   
-function playSequence(time) {
+function playSequenceCmaj(time) {
     let seqColumn = sequencerElement.grid.map(row => row[playIndex]);
-    for (let i = 0; i < seqNotes.length; i++) {
+    for (let i = 0; i < seqNotesCmaj.length; i++) {
       if (seqColumn[i]) {
-        synth.triggerAttackRelease(seqNotes[i], '16n', time);
+        synth.triggerAttackRelease(seqNotesCmaj[i], '16n', time);
       }
     }
     playIndex = (playIndex + 1) % seqLength;
     columnHighlight = (columnHighlight + 1) % (seqLength * 4);
+}
+
+function playSequenceCmin(time) {
+  let seqColumn = sequencerElement.grid.map(row => row[playIndex]);
+  for (let i = 0; i < seqNotesCmaj.length; i++) {
+    if (seqColumn[i]) {
+      synth.triggerAttackRelease(seqNotesCmin[i], '16n', time);
+    }
+  }
+  playIndex = (playIndex + 1) % seqLength;
+  columnHighlight = (columnHighlight + 1) % (seqLength * 4);
 }
 
 function togglePlay() {
