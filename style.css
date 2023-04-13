@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ddd;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  /* Rotate the slider 90 degrees clockwise */
+  width: 100px;
+  height: 20px; /* Set height to the desired value */
+}
+
+.big-slider {
+  appearance: none;
+  background-color: #ddd;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  /* Rotate the slider 90 degrees clockwise */
+  width: 200px;
+  height: 50px; /* Set height to the desired value */
+
+}
+
+.hide-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+
+.synth-button {
+  background-color: #ffff00; /* Warning Yellow */ 
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
