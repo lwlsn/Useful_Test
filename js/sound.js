@@ -36,14 +36,13 @@ function createSynthButtons() {
   let buttonWidth = 120;
   let buttonHeight = 50;
   let xSpacing = 150;
-  let xPadding = width * (11/ 40);
+  let xPadding = width * (14/ 40);
   let ySpacing = 60;
-
   let rectPadding = 25;
 
   for (let i = 0; i < synthTypes.length; i++) {
     let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
-    let yPosition = sequencerElement.h*(8/13) * sequencerElement.rows + Math.floor(i / 2) * ySpacing;
+    let yPosition = sequencerElement.h*(6/13) * sequencerElement.rows + Math.floor(i / 2) * ySpacing;
     synthButtons[i].position(xPosition, yPosition);
     synthButtons[i].size(buttonWidth, buttonHeight);
     synthButtons[i].addClass('synth-button');

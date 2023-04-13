@@ -7,8 +7,8 @@ function createEffectSliders() {
       // slider[i].addClass('slider');
       // slider[i].hide();
 
-      let ySpacing = 150;
-      let xPadding = width/15;
+      let ySpacing = 120;
+      let xPadding = width*(1/8);
       slider[i] = new Potentiometer(sequencerElement.x - xPadding, sequencerElement.h/5*sequencerElement.rows +i*ySpacing, 50, effectLabels[i] );
     }
 
@@ -16,12 +16,13 @@ function createEffectSliders() {
 
 function createVolumeSlider() {
   volumeSlider = createSlider(-24, 0, -12, 1);
-  let xPadding = width*(4/15);
-  volumeSlider.position(sequencerElement.x - xPadding, sequencerElement.h/5*sequencerElement.rows); 
+  let xPadding = width * (13/ 40);
+  volumeSlider.position(sequencerElement.x - xPadding, sequencerElement.h/4*sequencerElement.rows); 
   volumeSlider.addClass('big-slider');
   volumeSlider.hide();
 
 }
+
   
 function updateTexts() {
 
@@ -29,17 +30,18 @@ function updateTexts() {
     for (let i=0; i <effectLabels.length; i++) {
       fill(0);
       let yPadding = 20;
-      let xPadding = width/15;
-      let ySpacing = 150;
+      let xPadding = width*(1/8);
+      let ySpacing = 120;
       if (isHidden) {
+        textSize(18);
         text(effectLabels[i],sequencerElement.x - xPadding,  sequencerElement.h/5*sequencerElement.rows +i*ySpacing - yPadding);
       }
 
     }
-    let xPadding = width*(4/15);
-    text("Volume", sequencerElement.x-width*(4/15),sequencerElement.h/5*sequencerElement.rows )
+    let xPadding = width * (13/ 40);
+    text("Volume", sequencerElement.x-xPadding,sequencerElement.h/5*sequencerElement.rows )
   
-      synth.volume.value = volumeSlider.value(); 
+    synth.volume.value = volumeSlider.value(); 
 }
 
 

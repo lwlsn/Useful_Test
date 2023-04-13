@@ -46,7 +46,7 @@ function setup() {
   addSequencerButton.mousePressed(toggleSeqShow); 
   addSequencerButton.position(width-width/14, height-height/10);
 
-  sequencerElement = new Sequencer(width-width*(7/14), 20, seqLength, seqNotesCmaj.length);
+  sequencerElement = new Sequencer(width-width*(7/14), 10, seqLength, seqNotesCmaj.length);
   sequencerElement2 = new Sequencer(width-width*(7/14), 425, seqLength, seqNotesCmaj.length);
   synth = new Tone.Synth().toDestination();
   synth2 = new Tone.Synth().toDestination();
@@ -82,7 +82,7 @@ function draw() {
     slider[i].display();
     slider[i].update();
   }
-  updateEffects()
+  updateEffects(); 
 
 
   // Highlight the current column
@@ -91,16 +91,26 @@ function draw() {
   rect((columnHighlight % seqLength) * sequencerElement.w + sequencerElement.x, sequencerElement.y, sequencerElement.w, sequencerElement.h * sequencerElement.rows);
   rect((columnHighlight % seqLength) * sequencerElement2.w + sequencerElement2.x, sequencerElement2.y, sequencerElement2.w, sequencerElement2.h * sequencerElement2.rows);
 
-  if(isHidden) {
-    zigzag(25);
+  // if(isHidden) {
+ 
     
-  } else {
-    zigzag(width*(7/12));
-  }
+  // } 
 
   if (isHidden) {
     image(mozImg, width/8, height*(3/4), 150, 150);
+    stroke(0, 80);
+
+  strokeWeight(2);
+  line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
+
+    zigzag(25);
   }
+
+  else {
+    zigzag(width*(7/12));
+  }
+
+
 
 
 }
