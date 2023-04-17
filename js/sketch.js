@@ -9,7 +9,7 @@ let sequencerElement2;
 
 let synth;
 let synth2;
-let seqNotesCmaj = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6'];
+let seqNotesCmaj = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4'];
 let seqNotesCmin = ['C4', 'D4', 'Eb4', 'F4', 'G4', 'Ab4', 'Bb4', 'C5', 'D5', 'Eb5', 'F5', 'G5', 'Ab5', 'Bb5', 'C6', 'D6', 'Eb6'];
 let seqLength = 17;
 let columnHighlight = 0;
@@ -102,12 +102,12 @@ function draw() {
 
   strokeWeight(2);
   line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
-
     zigzag(25);
+    
   }
 
   else {
-    zigzag(width*(7/12));
+    zigzag(width*(8/12));
   }
 
 

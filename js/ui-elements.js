@@ -21,6 +21,11 @@ function createVolumeSlider() {
   volumeSlider.addClass('big-slider');
   volumeSlider.hide();
 
+  // let pos = createVector(sequencerElement.x - xPadding, sequencerElement.h/4*sequencerElement.rows);
+  // let sSize = createVector(50, 150);
+  // let kSize = createVector( 60, 30);
+  // volumeSlider = new CustomSlider(pos, sSize, kSize);
+
 }
 
   
@@ -143,4 +148,50 @@ class Potentiometer{
   }
   
 
+}
+
+
+
+class CustomSlider {
+  constructor(pos, sliderSize, knobSize){
+    this.x=pos.x; 
+    this.y=pos.y;
+    this.w =sliderSize.x;
+    this.h = sliderSize.y;
+    this.knobSizeX= knobSize.x;
+    this.knobSizeY = knobSize.y;
+    this.knobX = this.x;
+    this.knobY = random(this.y-this.h/2, this.y+this.h/2)
+  }
+  
+  display() {
+    fill(0,200);  
+    rectMode(CENTER);
+    noStroke();
+    rect(this.x, this.y, this.w, this.x,  20);
+    
+    fill(0, 220);
+    rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 10);
+    rectMode(CORNER);
+  }
+  
+  update() {
+
+    if (mouseY < this.y+this.h/2 && mouseY > this.y-this.h/2) {
+        this.knobY = mouseY;
+    } else if (mouseY >= this.y+this.h/2) {
+      this.knobY =  this.y+this.h/2;
+    } else {
+      this.knobY = this.y-this.h/2;
+    }
+  }
+  
+  returnVal() {
+    let outValue = map(this.knobY,  this.y+this.h/2, this.y-this.h/2, 0, 1);
+    textSize(18);
+    fill(0);
+    text(outValue.toFixed(2), this.x+30, this.y+this.h/2 +20);
+    // console.log(outValue.toFixed(2));
+    return(outValue.toFixed(2));
+  }
 }

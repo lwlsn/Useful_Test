@@ -56,7 +56,6 @@ canvas {
 }
 
 
-
 .synth-button {
   background-color: #ffff00; /* Warning Yellow */ 
   padding: 15px 15px;
@@ -66,8 +65,11 @@ canvas {
   font-size: 12px;
   opacity: 0.6;
   transition: 0.3s;
+  border-radius: 10%;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
+
 .synth-button:hover {
   background-color: #000000;
   color: white;
@@ -81,7 +83,7 @@ canvas {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 28px;
   border-radius: 30%;
   opacity: 0.8;
   transition: 0.3s;
@@ -101,7 +103,66 @@ canvas {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 32px;
   border-radius: 30%;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+
+
+/* pulse wave */
+.play-button:before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation: pulsate1 2s;
+  animation: pulsate1 2s;
+  -webkit-animation-direction: forwards;
+  animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: steps;
+  animation-timing-function: steps;
+  opacity: 1;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, .75);
+  top: -30%;
+  left: -30%;
+  background: rgba(198, 16, 0, 0);
+}
+
+
+@-webkit-keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+
+  }
+}
+
+@keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+
+  }
 }

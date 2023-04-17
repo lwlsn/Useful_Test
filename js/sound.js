@@ -3,7 +3,7 @@ function changeSynthType(type) {
         synth = new Tone.Synth();
         synth.chain(cheby, delay, reverb);
       } else if (type === "AM Synth") {
-        synth = new Tone.AMSynth();
+        synth = new Tone.AMSynth(30, "square", "square");
         synth.chain(cheby, delay, reverb);
       } else if (type === "Duo Synth") {
         synth = new Tone.DuoSynth().toDestination();
