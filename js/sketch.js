@@ -92,7 +92,7 @@ function draw() {
   updateTexts();
   for (let i=0; i < effectLabels.length; i++) {
     slider[i].display();
-    slider[i].update();
+   // slider[i].update();
   }
   updateEffects(); 
 
@@ -122,6 +122,12 @@ function draw() {
   }
 
 
+}
+
+function mouseDragged() {
+  for (let i=0; i < effectLabels.length; i++) {
+    slider[i].update();
+  }
 }
 
 function mousePressed() {
