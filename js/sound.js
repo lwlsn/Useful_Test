@@ -41,8 +41,8 @@ function createSynthButtons() {
   let rectPadding = 25;
 
   for (let i = 0; i < synthTypes.length; i++) {
-    let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
-    let yPosition = sequencerElement.h*(6/13) * sequencerElement.rows + Math.floor(i / 2) * ySpacing;
+    let xPosition = sequencerElement.x - xPadding + (i % 3) * xSpacing;
+    let yPosition = sequencerElement.h*(9/13) * sequencerElement.rows + Math.floor(i / 3) * ySpacing;
     synthButtons[i].position(xPosition, yPosition);
     synthButtons[i].size(buttonWidth, buttonHeight);
     synthButtons[i].addClass('synth-button');
@@ -69,6 +69,7 @@ function loadEffects() {
   reverb = new Tone.JCReverb(0.25).toDestination();
   delay = new Tone.FeedbackDelay(0.25);
   cheby = new Tone.Chebyshev(50);
+  crusher =  new Tone.BitCrusher(4);
   
 
 }
@@ -78,5 +79,6 @@ function updateEffects() {
   reverb.wet.value = slider[0].returnVal();
   delay.wet.value = slider[1].returnVal();
   cheby.wet.value = slider[2].returnVal();
+  crusher.wet.value = slider[3].returnVal();
 
 }

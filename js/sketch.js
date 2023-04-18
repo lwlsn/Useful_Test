@@ -9,8 +9,8 @@ let sequencerElement2;
 
 let synth;
 let synth2;
-let seqNotesCmaj = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4'];
-let seqNotesCmin = ['C4', 'D4', 'Eb4', 'F4', 'G4', 'Ab4', 'Bb4', 'C5', 'D5', 'Eb5', 'F5', 'G5', 'Ab5', 'Bb5', 'C6', 'D6', 'Eb6'];
+let seqNotesCmaj = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4'];
+let seqNotesCmin = ['C2', 'D2', 'Eb2', 'F2', 'G2', 'Ab2', 'Bb2', 'C3', 'D3', 'Eb3', 'F3', 'G3', 'Ab3', 'Bb3', 'C4', 'D4', 'Eb4', 'G4'];
 let seqLength = 17;
 let columnHighlight = 0;
 let playIndex = 0;
@@ -22,12 +22,13 @@ let currentstep = 0;
 let synthType = "Tone.Synth()";
 let synthButtons = []; 
 
-let effectLabels = ["Reverb", "Delay", "Distortion"];
-let reverb, delay,cheby;
+let effectLabels = ["Reverb", "Delay", "Distortion", "Crush"];
+let reverb, delay,cheby, crusher;
 let slider = [];
 let volumeSlider;
 
-let mozImg; 
+let mozImg, mozImgX, mozImgY; 
+let mozImgAnimate = false;
 
 function preload() {
   mozImg = loadImage("assets/MOZ.png");
@@ -36,10 +37,13 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  mozImgX =width/8;
+  mozImgY =  height*(3/4);
   
   hideButton = createButton("Help");
   hideButton.mousePressed(toggleHide);
-  hideButton.position(width-width/13, 50);
+  hideButton.position(width-width/15, 20);
   hideButton.addClass('hide-button');
   addSequencerButton = createButton("+");
   addSequencerButton.addClass('track-button');
@@ -64,12 +68,20 @@ function setup() {
   createEffectSliders();
   loadEffects();
 
-  synth.chain(cheby, delay, reverb);
+  synth.chain(crusher, cheby, delay, reverb);
 
 }
 
 function draw() {
   background(255, 255,0);
+
+  if (mozImgAnimate) {
+    mozImgX+=5; 
+    mozImgY += random(-2, 2);
+    if (mozImgX >width +50) {
+      mozImgAnimate = false;
+    } 
+  }
 
   
   if (isHidden) {
@@ -91,26 +103,23 @@ function draw() {
   rect((columnHighlight % seqLength) * sequencerElement.w + sequencerElement.x, sequencerElement.y, sequencerElement.w, sequencerElement.h * sequencerElement.rows);
   rect((columnHighlight % seqLength) * sequencerElement2.w + sequencerElement2.x, sequencerElement2.y, sequencerElement2.w, sequencerElement2.h * sequencerElement2.rows);
 
-  // if(isHidden) {
- 
-    
-  // } 
+
 
   if (isHidden) {
-    image(mozImg, width/8, height*(3/4), 150, 150);
+    image(mozImg, mozImgX,mozImgY, 150, 150);
     stroke(0, 80);
 
   strokeWeight(2);
   line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
     zigzag(25);
+    volumeSlider.display();
+    volumeSlider.update();
     
   }
 
   else {
     zigzag(width*(8/12));
   }
-
-
 
 
 }
