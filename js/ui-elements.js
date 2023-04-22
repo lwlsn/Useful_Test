@@ -16,6 +16,19 @@ function createEffectSliders() {
       // slider[i] = new Potentiometer(sequencerElement.x - xPadding, sequencerElement.h/5*sequencerElement.rows +i*ySpacing, 50, effectLabels[i] );
     }
 
+}
+
+
+function createEffectSliders2() {
+  for (let i=0; i <effectLabels.length; i++) {
+
+    let ySpacing = 120;
+    let xPadding = width*(1/6);
+    let xSpacing = 100;
+    let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
+    let yPosition = 425+sequencerElement.h/7*sequencerElement.rows + Math.floor(i / 2) * ySpacing;
+    slider2[i] = new Potentiometer(xPosition, yPosition,50, effectLabels[i]);
+  }
 
 }
 
@@ -30,6 +43,18 @@ function createVolumeSlider() {
   let sSize = createVector(20, 180);
   let kSize = createVector( 60, 30);
   volumeSlider = new CustomSlider(pos, sSize, kSize);
+
+}
+
+
+function createVolumeSlider2() {
+
+  let xPadding = width * (11/ 40);
+
+  let pos = createVector(sequencerElement.x - xPadding, 425+sequencerElement.h*(15/40)*sequencerElement.rows);
+  let sSize = createVector(20, 180);
+  let kSize = createVector( 60, 30);
+  volumeSlider2 = new CustomSlider(pos, sSize, kSize);
 
 }
 
@@ -57,6 +82,29 @@ function updateTexts() {
 }
 
 
+function updateTexts2() {
+  textSize(24);
+    for (let i=0; i <effectLabels.length; i++) {
+      fill(0);
+      let ySpacing = 120;
+      let xPadding = width*(1/6);
+      let xSpacing = 100;
+      let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
+      let yPosition = 425+sequencerElement.h/8*sequencerElement.rows + Math.floor(i / 2) * ySpacing;
+      if (isNotHidden) {
+        textSize(18);
+        text(effectLabels[i] , xPosition,  yPosition-10);
+      }
+
+    }
+    let xPadding = width * (12/ 40);
+    text("MASTER VOLUME", sequencerElement.x-xPadding,425+sequencerElement.h/25*sequencerElement.rows, 100, 100);
+  
+    synth2.volume.value = volumeSlider2.returnVal(); 
+
+}
+
+
 function toggleHide() {
     isNotHidden = !isNotHidden;
     if (playButton.elt.style.display === 'none') {
@@ -72,6 +120,7 @@ function toggleHide() {
         synthButtons[i].hide();
       }
     }
+
 
     // for (let i=0; i< slider.length; i++) {
     //   if (slider[i].elt.style.display == 'none') {
@@ -103,6 +152,7 @@ function toggleSeqShow() {
   mozImgAnimate = true;
   resizeCanvas(windowWidth, windowHeight+height/2);
   moreSeqElementsShowing[0] = true; 
+  resizeCanvas(windowWidth, windowHeight+200);
 
 }
   
@@ -151,15 +201,9 @@ class Potentiometer{
     textSize(12);
     fill(0);
     return(outValue.toFixed(2));
-
-    
+ 
   }
 
-  // TODO - if mouse is pressed, freeze
-
-  // mousePressed() {
-
-  // }
   
 
 }
@@ -182,10 +226,10 @@ class CustomSlider {
     fill(0,200);  
     rectMode(CENTER);
     noStroke();
-    rect(this.x, this.y, this.w, this.h,  20);
+    rect(this.x, this.y, this.w, this.h,  100);
     
     fill(0, 220);
-    rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 10);
+    rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 120);
     rectMode(CORNER);
   }
   

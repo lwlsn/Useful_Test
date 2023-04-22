@@ -22,11 +22,14 @@ let currentstep = 0;
 
 let synthType = "Tone.Synth()";
 let synthButtons = []; 
+let synthButtons2 = [];
 
 let effectLabels = ["Reverb", "Delay", "Distortion", "Crush"];
 let reverb, delay,cheby, crusher;
+let reverb2, delay2, cheby2, crusher2;
 let slider = [];
-let volumeSlider;
+let slider2 = [];
+let volumeSlider, volumeSlider2;
 
 let mozImg, mozImgX, mozImgY; 
 let mozImgAnimate = false;
@@ -63,15 +66,18 @@ function setup() {
   playButton.hide();
   playButton.addClass('play-button');
 
-  sequencerElement2 = new Sequencer(width-width*(7/14), 425, seqLength, seqNotesCmaj.length);
+  sequencerElement2 = new Sequencer(width-width*(7/14), 430, seqLength, seqNotesCmaj.length);
 
   createSynthButtons();
-  createVolumeSlider();
+  createSynth2Buttons();
   createEffectSliders();
+  createEffectSliders2();
+  createVolumeSlider();
+  createVolumeSlider2();
   loadEffects();
 
-  // synth.chain(crusher, cheby, delay, reverb);
-  // synth2.chain(crusher,cheby, delay, reverb);
+  synth.chain(crusher, cheby, delay, reverb);
+  synth2.chain(crusher2,cheby2, delay2, reverb2);
 
 }
 
@@ -115,14 +121,27 @@ function draw() {
 
     strokeWeight(2);
     line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
+   
     if (moreSeqElementsShowing[0]) {
       stroke(0, 80);
       strokeWeight(2);
       line(0, 2*sequencerElement.h*sequencerElement.rows+40, width, 2*sequencerElement.h*sequencerElement.rows+40 );
+      for (let i = 0; i < 6; i++) { // to-do: using hard coded numbers here
+        synthButtons2[i].show();
+      }
+      for (let i=0; i < effectLabels.length; i++) {
+        slider2[i].display();
+      }
+      volumeSlider2.display();
+      updateTexts2();
     }
+   
+
+
     zigzag(25);
     volumeSlider.display();
-   
+
+
     
   }
 
@@ -136,9 +155,10 @@ function draw() {
 function mouseDragged() {
   for (let i=0; i < effectLabels.length; i++) {
     slider[i].update();
+    slider2[i].update();
   }
-
   volumeSlider.update();
+  volumeSlider2.update();
 }
 
 function mousePressed() {
