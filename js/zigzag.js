@@ -15,7 +15,7 @@ function zigzag(xVal) {
     
     fill(255, 255, 0);
   
-    if (!isHidden) {
+    if (!isNotHidden) {
        
         textSize(32);
         text("This is some text", xVal-xVal*(2/3)+10, 100);

@@ -69,7 +69,7 @@ function loadEffects() {
   reverb = new Tone.JCReverb(0.25).toDestination();
   delay = new Tone.FeedbackDelay(0.25);
   cheby = new Tone.Chebyshev(50);
-  crusher =  new Tone.BitCrusher(4);
+  crusher =  new Tone.BitCrusher(8);
   
 
 }

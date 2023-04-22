@@ -44,7 +44,7 @@ function updateTexts() {
       let xSpacing = 100;
       let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
       let yPosition = sequencerElement.h/8*sequencerElement.rows + Math.floor(i / 2) * ySpacing;
-      if (isHidden) {
+      if (isNotHidden) {
         textSize(18);
         text(effectLabels[i] , xPosition,  yPosition-10);
       }
@@ -58,7 +58,7 @@ function updateTexts() {
 
 
 function toggleHide() {
-    isHidden = !isHidden;
+    isNotHidden = !isNotHidden;
     if (playButton.elt.style.display === 'none') {
       playButton.show();
     } else {
@@ -85,8 +85,6 @@ function toggleHide() {
     // for (let i=0; i< slider.length; i++) {
     //   slider[i].toggleDisplay();
     // }
-  
-  
 
     // if (volumeSlider.elt.style.display == 'none') {
     //   volumeSlider.show();
@@ -103,6 +101,8 @@ function toggleHide() {
 function toggleSeqShow() {
   sequencerElement2.toggleDisplay(); 
   mozImgAnimate = true;
+  resizeCanvas(windowWidth, windowHeight+height/2);
+  moreSeqElementsShowing[0] = true; 
 
 }
   

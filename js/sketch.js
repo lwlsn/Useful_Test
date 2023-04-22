@@ -1,15 +1,16 @@
 let numTriangles = 6;
 
 let hideButton;
-let isHidden = false;
+let isNotHidden = false;
 let addSequencerButton; 
 
 let sequencerElement;
 let sequencerElement2; 
+let moreSeqElementsShowing = [false, false, false, false];
 
 let synth;
 let synth2;
-let seqNotesCmaj = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4'];
+let seqNotesCmaj = ['C1', 'D1', 'E1', 'F1','G1', 'A1', 'B1', 'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4'];
 let seqNotesCmin = ['C2', 'D2', 'Eb2', 'F2', 'G2', 'Ab2', 'Bb2', 'C3', 'D3', 'Eb3', 'F3', 'G3', 'Ab3', 'Bb3', 'C4', 'D4', 'Eb4', 'G4'];
 let seqLength = 17;
 let columnHighlight = 0;
@@ -51,9 +52,8 @@ function setup() {
   addSequencerButton.position(width-width/14, height-height/10);
 
   sequencerElement = new Sequencer(width-width*(7/14), 10, seqLength, seqNotesCmaj.length);
-  sequencerElement2 = new Sequencer(width-width*(7/14), 425, seqLength, seqNotesCmaj.length);
   synth = new Tone.Synth().toDestination();
-  synth2 = new Tone.Synth().toDestination();
+  synth2 = new Tone.AMSynth().toDestination();
   Tone.Transport.scheduleRepeat(playSequenceCmaj, '16n');
   Tone.Transport.start();
 
@@ -63,20 +63,25 @@ function setup() {
   playButton.hide();
   playButton.addClass('play-button');
 
+  sequencerElement2 = new Sequencer(width-width*(7/14), 425, seqLength, seqNotesCmaj.length);
+
   createSynthButtons();
   createVolumeSlider();
   createEffectSliders();
   loadEffects();
 
-  synth.chain(crusher, cheby, delay, reverb);
+  // synth.chain(crusher, cheby, delay, reverb);
+  // synth2.chain(crusher,cheby, delay, reverb);
 
 }
 
 function draw() {
   background(255, 255,0);
 
+
+
   if (mozImgAnimate) {
-    mozImgX+=5; 
+    mozImgX+=10; 
     mozImgY += random(-2, 2);
     if (mozImgX >width +50) {
       mozImgAnimate = false;
@@ -84,7 +89,7 @@ function draw() {
   }
 
   
-  if (isHidden) {
+  if (isNotHidden) {
     sequencerElement.display();
     sequencerElement2.display();
   }
@@ -92,7 +97,6 @@ function draw() {
   updateTexts();
   for (let i=0; i < effectLabels.length; i++) {
     slider[i].display();
-   // slider[i].update();
   }
   updateEffects(); 
 
@@ -105,15 +109,20 @@ function draw() {
 
 
 
-  if (isHidden) {
+  if (isNotHidden) {
     image(mozImg, mozImgX,mozImgY, 150, 150);
     stroke(0, 80);
 
-  strokeWeight(2);
-  line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
+    strokeWeight(2);
+    line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
+    if (moreSeqElementsShowing[0]) {
+      stroke(0, 80);
+      strokeWeight(2);
+      line(0, 2*sequencerElement.h*sequencerElement.rows+40, width, 2*sequencerElement.h*sequencerElement.rows+40 );
+    }
     zigzag(25);
     volumeSlider.display();
-    volumeSlider.update();
+   
     
   }
 
@@ -128,6 +137,8 @@ function mouseDragged() {
   for (let i=0; i < effectLabels.length; i++) {
     slider[i].update();
   }
+
+  volumeSlider.update();
 }
 
 function mousePressed() {
