@@ -82,7 +82,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255,0);
+  background("#FFED00");
 
 
 
@@ -147,6 +147,8 @@ function draw() {
 
   else {
     zigzag(width*(8/12));
+   
+    
   }
 
 

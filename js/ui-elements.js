@@ -122,6 +122,16 @@ function toggleHide() {
     }
 
 
+  for (let i=0; i < synthButtons2.length; i++) {
+    if (synthButtons2[i].elt.style.display == 'none') {
+      // synthButtons2[i].show();
+    } else {
+      synthButtons2[i].hide();
+    }
+  }
+
+
+
     // for (let i=0; i< slider.length; i++) {
     //   if (slider[i].elt.style.display == 'none') {
     //     slider[i].show();
@@ -155,6 +165,8 @@ function toggleSeqShow() {
   resizeCanvas(windowWidth, windowHeight+200);
   addSequencerButton.position(width-width/14, height-height/10);
 
+
+
 }
   
 
@@ -185,7 +197,7 @@ class Potentiometer{
     ellipse(this.x, this.y, this.diameter);
     
     // Draw knob
-    stroke(255, 255,0);
+    stroke("#FFED00");
     strokeWeight(2);
     
     let knobX = this.x+this.radius*cos(this.angle);

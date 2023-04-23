@@ -13,12 +13,12 @@ function zigzag(xVal) {
     noStroke();
     rect(0, 0, xVal+2, height);
     
-    fill(255, 255, 0);
+    fill("#FFED00");
   
     if (!isNotHidden) {
        
         textSize(32);
-        text("This is some text", xVal-xVal*(2/3)+10, 100);
+        text("Useful Tools: Moz", xVal-xVal*(2/3)+10, 100);
 
         text("Bis re num, et debis et ra dolesciam, tem as plique veremporem sus ditas alitatis eliam que volupta autatatus.", xVal-xVal*(2/3)+10,200, 500, 400);
 
