@@ -153,6 +153,7 @@ function toggleSeqShow() {
   resizeCanvas(windowWidth, windowHeight+height/2);
   moreSeqElementsShowing[0] = true; 
   resizeCanvas(windowWidth, windowHeight+200);
+  addSequencerButton.position(width-width/14, height-height/10);
 
 }
   
