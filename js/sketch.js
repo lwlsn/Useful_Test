@@ -108,11 +108,17 @@ function draw() {
 
 
   // Highlight the current column
-  fill(255, 255, 0, 50);
+  fill(50, 168, 82, 50);
   noStroke();
-  rect((columnHighlight % seqLength) * sequencerElement.w + sequencerElement.x, sequencerElement.y, sequencerElement.w, sequencerElement.h * sequencerElement.rows);
-  rect((columnHighlight % seqLength) * sequencerElement2.w + sequencerElement2.x, sequencerElement2.y, sequencerElement2.w, sequencerElement2.h * sequencerElement2.rows);
+  if (isNotHidden) {
+    rect((columnHighlight % seqLength) * sequencerElement.w + sequencerElement.x, sequencerElement.y, sequencerElement.w, sequencerElement.h * sequencerElement.rows);
+  }
+  
 
+  if (moreSeqElementsShowing[0] && isNotHidden) {
+    rect((columnHighlight % seqLength) * sequencerElement2.w + sequencerElement2.x, sequencerElement2.y, sequencerElement2.w, sequencerElement2.h * sequencerElement2.rows);
+  }
+  
 
 
   if (isNotHidden) {
