@@ -225,7 +225,7 @@ function mouseDragged() {
 // }
 
 
-function touchEnded() {
+function touchStarted() {
   sequencerElement.toggleSquare();
   sequencerElement2.toggleSquare();
 }
