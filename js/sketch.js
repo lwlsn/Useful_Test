@@ -49,8 +49,8 @@ function setup() {
   hideButton.mousePressed(toggleHide);
   hideButton.position(width-width/15, 20);
   hideButton.addClass('hide-button');
-  addSequencerButton = createButton("+");
-  addSequencerButton.addClass('track-button');
+  addSequencerButton = createButton("＋");
+  addSequencerButton.addClass('add-button');
   addSequencerButton.mousePressed(toggleSeqShow); 
   addSequencerButton.position(width-width/14, height-height/10);
 
@@ -61,7 +61,7 @@ function setup() {
   Tone.Transport.start();
 
   playButton = createButton("Play");
-  playButton.position(width/12,height/20)
+  playButton.position(width/12, 20)
   playButton.mousePressed(togglePlay);
   playButton.hide();
   playButton.addClass('play-button');
@@ -78,6 +78,13 @@ function setup() {
 
   synth.chain(crusher, cheby, delay, reverb);
   synth2.chain(crusher2,cheby2, delay2, reverb2);
+
+   // Prevent top level gesture scrolling/zooming
+  // This if iOS Safari specific
+  document.addEventListener("gesturestart", function (e) {
+    e.preventDefault();
+    return false;
+  });
 
 }
 
@@ -169,7 +176,14 @@ function mouseDragged() {
   volumeSlider2.update();
 }
 
-function mousePressed() {
+// TO remove? On mouse pressed 
+// function mousePressed() {
+//   sequencerElement.toggleSquare();
+//   sequencerElement2.toggleSquare();
+// }
+
+
+function touchEnded() {
   sequencerElement.toggleSquare();
   sequencerElement2.toggleSquare();
 }

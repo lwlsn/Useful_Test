@@ -11,7 +11,7 @@ function zigzag(xVal) {
     }
     
     noStroke();
-    rect(0, 0, xVal+2, height);
+    rect(0, 0, xVal+1, height);
     
     fill("#FFED00");
   

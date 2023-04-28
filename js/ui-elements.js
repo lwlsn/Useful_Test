@@ -12,7 +12,7 @@ function createEffectSliders() {
       let xSpacing = 100;
       let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
       let yPosition = sequencerElement.h/7*sequencerElement.rows + Math.floor(i / 2) * ySpacing;
-      slider[i] = new Potentiometer(xPosition, yPosition,50, effectLabels[i]);
+      slider[i] = new Potentiometer(xPosition, yPosition,60, effectLabels[i]);
       // slider[i] = new Potentiometer(sequencerElement.x - xPadding, sequencerElement.h/5*sequencerElement.rows +i*ySpacing, 50, effectLabels[i] );
     }
 
@@ -27,7 +27,7 @@ function createEffectSliders2() {
     let xSpacing = 100;
     let xPosition = sequencerElement.x - xPadding + (i % 2) * xSpacing;
     let yPosition = 425+sequencerElement.h/7*sequencerElement.rows + Math.floor(i / 2) * ySpacing;
-    slider2[i] = new Potentiometer(xPosition, yPosition,50, effectLabels[i]);
+    slider2[i] = new Potentiometer(xPosition, yPosition,60, effectLabels[i]);
   }
 
 }

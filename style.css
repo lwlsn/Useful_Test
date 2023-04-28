@@ -54,9 +54,9 @@ canvas {
   text-decoration: none;
   display: inline-block;
   font-family: 'Helvetica';
-  font-size: 12px;
+  font-size: 24px;
   font-family: Helvetica, Arial, sans-serif;
-  border-radius: 20%;
+  border-radius: 40%;
   opacity: 0.8;
   transition: 0.3s;
 }
@@ -118,7 +118,7 @@ canvas {
   text-decoration: none;
   display: inline-block;
   font-size: 32px;
-  border-radius: 30%;
+  border-radius: 40%;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -179,4 +179,53 @@ canvas {
     box-shadow: none;
 
   }
+}
+
+
+.add-button {
+  width: 50px;
+  height: 50px;
+  background-color: #21130D;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-button i {
+  position: relative;
+}
+
+.add-button i:before,
+.add-button i:after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.add-button i:before {
+  top: 50%;
+  left: 50%;
+  height:40px;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.add-button i:after {
+  top: 50%;
+  left: 50%;
+  height:40px;
+  transform: translate(-50%, -50%);
 }
