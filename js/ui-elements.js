@@ -293,10 +293,10 @@ class CustomSlider {
     fill(0,230);  
     rectMode(CENTER);
     noStroke();
-    rect(this.x, this.y, this.w, this.h,  100);
+    rect(this.x, this.y, this.w, this.h,  50);
     
     fill(0,230);
-    rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 120);
+    rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 5);
     rectMode(CORNER);
   }
   
