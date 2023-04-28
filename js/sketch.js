@@ -165,9 +165,9 @@ function draw() {
     noFill();
     stroke(0,130);
     rectMode(CENTER);
-    rect(xPosition+width*(1/30), yPosition-5, width*(13/40), 125, 20);
+    rect(xPosition+width*(1/30), yPosition-5, 425, 125, 20);
     if (moreSeqElementsShowing[0]) {
-      rect(xPosition+width*1/30, 425+yPosition-5,  width*(13/40), 125, 20);
+      rect(xPosition+width*1/30, 425+yPosition-5,  425, 125, 20);
     }
   
 
