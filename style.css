@@ -1,6 +1,5 @@
 html {
   margin: 0;
-  margin-top:0;
   padding: 0;
   
 }
@@ -10,6 +9,7 @@ body {
   margin: 0;
   margin-top:0;
   padding: 0;
+  background-color: #FFED00;
   /* overflow: hidden; */
 }
 
@@ -48,7 +48,7 @@ canvas {
 
 .hide-button {
   background-color: #000000; /* Solid black */
-  color: white; 
+  color: #FFED00; 
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -112,7 +112,7 @@ canvas {
 
 .play-button {
   background-color: #000000; /* Warning Yellow */
-  color: white; 
+  color:  #FFED00;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -188,7 +188,7 @@ canvas {
   background-color: #21130D;
   border-radius: 50%;
   border: none;
-  color: #fff;
+  color: #FFED00;
   font-size: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;

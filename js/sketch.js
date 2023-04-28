@@ -45,7 +45,7 @@ function setup() {
   mozImgX =width/8;
   mozImgY =  height*(3/4);
   
-  hideButton = createButton("Help");
+  hideButton = createButton("Start");
   hideButton.mousePressed(toggleHide);
   hideButton.position(width-width/15, 20);
   hideButton.addClass('hide-button');
@@ -133,12 +133,12 @@ function draw() {
     stroke(0, 80);
 
     strokeWeight(2);
-    line(0, sequencerElement.h*sequencerElement.rows+20, width, sequencerElement.h*sequencerElement.rows+20 );
+    line(120, sequencerElement.h*sequencerElement.rows+20, width-120, sequencerElement.h*sequencerElement.rows+20 );
    
     if (moreSeqElementsShowing[0]) {
       stroke(0, 80);
       strokeWeight(2);
-      line(0, 2*sequencerElement.h*sequencerElement.rows+40, width, 2*sequencerElement.h*sequencerElement.rows+40 );
+      line(120, 2*sequencerElement.h*sequencerElement.rows+40, width-120, 2*sequencerElement.h*sequencerElement.rows+40 );
       for (let i = 0; i < 6; i++) { // to-do: using hard coded numbers here
         synthButtons2[i].show();
       }
@@ -155,13 +155,55 @@ function draw() {
     volumeSlider.display();
 
 
+    // Synth Button Outlines
+    let xSpacing = 150;
+    let xPadding = width * (13/ 40);
+    let ySpacing = 60;
+    let xPosition = sequencerElement.x - xPadding + xSpacing;
+    let yPosition = sequencerElement.h*(9/13)* sequencerElement.rows + ySpacing;
+
+    noFill();
+    stroke(0,130);
+    rectMode(CENTER);
+    rect(xPosition+width*(1/30), yPosition-5, width*(13/40), 125, 20);
+    if (moreSeqElementsShowing[0]) {
+      rect(xPosition+width*1/30, 425+yPosition-5,  width*(13/40), 125, 20);
+    }
+  
+
+    // Volume Slider Outlines 
+
+    let ySpacingVol = 120;
+    let xPaddingVol = width*(1/6);
+    let xSpacingVol = 100;
+    let xPositionVol = sequencerElement.x - xPaddingVol +  xSpacingVol;
+    let yPositionVol = sequencerElement.h/7*sequencerElement.rows + ySpacingVol;
+
+    rect(xPositionVol-width*(7/40), yPositionVol-40, width*(5/40), 250, 20);
+    if (moreSeqElementsShowing[0]) {
+      rect(xPositionVol-width*(7/40), 425+yPositionVol-40, width*(5/40), 250, 20);
+    }
+
+
+    // Effect Slider Outlines 
+    let ySpacingEffect = 120;
+    let xPaddingEffect = width*(1/6);
+    let xSpacingEffect = 100;
+    let xPositionEffect = sequencerElement.x - xPaddingEffect + xSpacingEffect;
+    let yPositionEffect = sequencerElement.h/7*sequencerElement.rows + ySpacingEffect;
+
+    rect(xPositionEffect-width*(1/50), yPositionEffect-40, width*(3/20), 250, 20);
+    if (moreSeqElementsShowing[0]) {
+      rect(xPositionEffect-width*(1/50), 425+yPositionEffect-40, width*(3/20), 250, 20);
+    }
+
+    rectMode(CORNER);
+    noStroke();
     
   }
 
   else {
     zigzag(width*(8/12));
-   
-    
   }
 
 

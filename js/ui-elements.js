@@ -79,6 +79,9 @@ function updateTexts() {
     text("MASTER VOLUME", sequencerElement.x-xPadding,sequencerElement.h/25*sequencerElement.rows, 100, 100);
   
     synth.volume.value = volumeSlider.returnVal(); 
+
+    textSize(32)
+    text("MOZ", width/2, height-height/12);
 }
 
 
@@ -109,8 +112,10 @@ function toggleHide() {
     isNotHidden = !isNotHidden;
     if (playButton.elt.style.display === 'none') {
       playButton.show();
+      hideButton.html("Help");
     } else {
       playButton.hide();
+      hideButton.html("Start");
     }
 
     for (let i=0; i < synthButtons.length; i++) {
@@ -217,7 +222,6 @@ class Potentiometer{
  
   }
 
-  
 
 }
 
@@ -236,12 +240,12 @@ class CustomSlider {
   }
   
   display() {
-    fill(0,200);  
+    fill(0,230);  
     rectMode(CENTER);
     noStroke();
     rect(this.x, this.y, this.w, this.h,  100);
     
-    fill(0, 220);
+    fill(0,230);
     rect(this.knobX, this.knobY, this.knobSizeX, this.knobSizeY, 120);
     rectMode(CORNER);
   }
