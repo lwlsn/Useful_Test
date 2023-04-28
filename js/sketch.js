@@ -179,9 +179,9 @@ function draw() {
     let xPositionVol = sequencerElement.x - xPaddingVol +  xSpacingVol;
     let yPositionVol = sequencerElement.h/7*sequencerElement.rows + ySpacingVol;
 
-    rect(xPositionVol-width*(7/40), yPositionVol-40, width*(5/40), 250, 20);
+    rect(xPositionVol-width*(7/40), yPositionVol-40, 180, 250, 20);
     if (moreSeqElementsShowing[0]) {
-      rect(xPositionVol-width*(7/40), 425+yPositionVol-40, width*(5/40), 250, 20);
+      rect(xPositionVol-width*(7/40), 425+yPositionVol-40, 180, 250, 20);
     }
 
 
@@ -192,9 +192,9 @@ function draw() {
     let xPositionEffect = sequencerElement.x - xPaddingEffect + xSpacingEffect;
     let yPositionEffect = sequencerElement.h/7*sequencerElement.rows + ySpacingEffect;
 
-    rect(xPositionEffect-width*(1/50), yPositionEffect-40, width*(3/20), 250, 20);
+    rect(xPositionEffect-width*(1/50), yPositionEffect-40, 220, 250, 20);
     if (moreSeqElementsShowing[0]) {
-      rect(xPositionEffect-width*(1/50), 425+yPositionEffect-40, width*(3/20), 250, 20);
+      rect(xPositionEffect-width*(1/50), 425+yPositionEffect-40, 220, 250, 20);
     }
 
     rectMode(CORNER);
